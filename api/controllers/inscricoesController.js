@@ -58,7 +58,7 @@ exports.nova_inscricao = function (req, res) {
                     if (err)
                         res.send(err);
                      res
-                       .status(401)
+                       .status(200)
                         .json(inscricao);
                     });
             }
