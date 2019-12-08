@@ -1,14 +1,7 @@
 'use strict';
 var mongoose = require('mongoose'),
 Event = mongoose.model('Event');
-
-exports.getAllEvents = function (req, res) {
-    Evento.find({}, function (err, evento) {
-        if (err)
-            res.send(err);
-        res.json(evento);
-    });
-};
+let Insc = mongoose.model('Inscricao');
 
 const Utilizador = mongoose.model('Utilizador');
 const getUtilizador = (req, res, callback) => {
@@ -21,7 +14,6 @@ const getUtilizador = (req, res, callback) => {
                         .status(404)
                         .json({ "message": "Utilizador não encontrado!" });
                 } else if (err) {
-                    console.log(err);
                     return res
                         .status(404)
                         .json(err);
@@ -33,6 +25,80 @@ const getUtilizador = (req, res, callback) => {
             .status(404)
             .json({ "message": "Utilizador não encontrado!"  });
     }
+};
+
+exports.getAllEvents = function (req, res) {
+    getUtilizador(req, res, 
+        (req, res, utilizadorId) => {   
+            Event.find({}, function (err, evento) {
+                if (err)
+                    res.send(err);
+                res.json(evento);
+            });
+        });
+};
+
+exports.getEventById = function (req, res) {
+    getUtilizador(req, res, 
+        (req, res, utilizadorId) => {   
+            Event.findById(req.params.id_evento, function (err, evento) {
+                if (err)
+                    res.send(err);
+                res.json(evento);
+            });
+        });
+};
+
+exports.getInscritosByEventId = function (req, res) {
+    getUtilizador(req, res, 
+        (req, res, utilizadorId) => {   
+            Event.findById(req.params.id_evento, function (err, evento) {
+
+                if (err)
+                    res.send(err);
+
+                let inscricoes = [];
+                
+                if(evento.inscricoes.length == 0) res.send(inscricoes);
+                               
+                for(let i = 0; i < evento.inscricoes.length; i++) {
+
+                    Insc.findById(evento.inscricoes[i], function (err, inscricao) {
+                        if (err)
+                            res.send(err);
+                        
+                        inscricoes.push(inscricao);
+
+                        if(i == evento.inscricoes.length - 1) res.send(inscricoes);
+                    });
+                }
+            });
+        });
+};
+
+exports.changeInscricaoByeventId = function (req, res) {
+    getUtilizador(req, res, 
+        (req, res, utilizadorId) => {   
+
+            Event.findById(req.params.id_evento, function (err, evento) {
+                if (err)
+                    res.send(err);
+                
+                Insc.findById(req.params.id, function (err, inscricao) {
+                    if (err)
+                        res.send(err);
+
+                        evento.inscricoes.push(inscricao);
+                    
+                        Event.findOneAndUpdate({ _id: req.params.id_evento},
+                            evento, { new: true }, function (err, inscricao) {
+                            if (err)
+                                res.send(err);
+                            res.json(evento);
+                        });
+                });
+            });
+        });
 };
 
 // POST /eventos

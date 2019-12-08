@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "3340d269-c8c0-4edb-8349-a03281c84786",
+		"name": "API RESTful Arquitetura de Sistemas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - Lista todos os eventos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVhMzEwNDczY2ExMTQ2ZjAwZDljZTAiLCJ1c2VybmFtZSI6InRpYWdvIiwiZW1haWwiOiJ0aWFnb0BpcGNhLnB0Iiwibm9tZSI6IlRpYWdvIFNpbHZhIiwiZXhwIjoxNTc2MjM1Nzg4LCJpYXQiOjE1NzU2MzA5ODh9.M9ZZfphcSDLNF_LDa0vTmZoqf2AWqVFioZch5EDM1zE",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/eventos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"eventos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST -  Insere a designação de um novo evento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVhMzEwNDczY2ExMTQ2ZjAwZDljZTAiLCJ1c2VybmFtZSI6InRpYWdvIiwiZW1haWwiOiJ0aWFnb0BpcGNhLnB0Iiwibm9tZSI6IlRpYWdvIFNpbHZhIiwiZXhwIjoxNTc2MjM0MjYyLCJpYXQiOjE1NzU2Mjk0NjJ9.2jocTPbZmePgRjHQoSjXOZ3KvfS542n22WyCSrJdCNE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"designation\": \"Seminário IPCA\",\n\t\"place\": \"IPCA\",\n\t\"capacity\": 1500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/eventos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"eventos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET -  Detalhes do evento :id_evento",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVhMzEwNDczY2ExMTQ2ZjAwZDljZTAiLCJ1c2VybmFtZSI6InRpYWdvIiwiZW1haWwiOiJ0aWFnb0BpcGNhLnB0Iiwibm9tZSI6IlRpYWdvIFNpbHZhIiwiZXhwIjoxNTc2MjUzODczLCJpYXQiOjE1NzU2NDkwNzN9.dJh38n_RsbjKTHsnC88EZnTN45-r3KdfgQmAVWndU6k",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/5dea7f49803c1735b4143a3b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"5dea7f49803c1735b4143a3b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET -  Lista dos inscritos no evento :id_evento",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVhMzEwNDczY2ExMTQ2ZjAwZDljZTAiLCJ1c2VybmFtZSI6InRpYWdvIiwiZW1haWwiOiJ0aWFnb0BpcGNhLnB0Iiwibm9tZSI6IlRpYWdvIFNpbHZhIiwiZXhwIjoxNTc2MjUzODczLCJpYXQiOjE1NzU2NDkwNzN9.dJh38n_RsbjKTHsnC88EZnTN45-r3KdfgQmAVWndU6k",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/5dea7f49803c1735b4143a3b/inscritos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"5dea7f49803c1735b4143a3b",
+						"inscritos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Altera a designação de um inscrito",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVhMzEwNDczY2ExMTQ2ZjAwZDljZTAiLCJ1c2VybmFtZSI6InRpYWdvIiwiZW1haWwiOiJ0aWFnb0BpcGNhLnB0Iiwibm9tZSI6IlRpYWdvIFNpbHZhIiwiZXhwIjoxNTc2NDE5MjcwLCJpYXQiOjE1NzU4MTQ0NzB9.dcyBDkktpCTDqrkNTHq8AS2EZ4pcV_oO_J72hcRYbKo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/5dea7f49803c1735b4143a3b/5ded090bafbbf63994fbf740",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"5dea7f49803c1735b4143a3b",
+						"5ded090bafbbf63994fbf740"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Lista dos inscritos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/inscricoes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"inscricoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Insere o nome de um novo inscrito",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGVhMzEwNDczY2ExMTQ2ZjAwZDljZTAiLCJ1c2VybmFtZSI6InRpYWdvIiwiZW1haWwiOiJ0aWFnb0BpcGNhLnB0Iiwibm9tZSI6IlRpYWdvIFNpbHZhIiwiZXhwIjoxNTc2NDE5MjcwLCJpYXQiOjE1NzU4MTQ0NzB9.dcyBDkktpCTDqrkNTHq8AS2EZ4pcV_oO_J72hcRYbKo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\": \"joao\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/inscricoes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"inscricoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Registar Utilizador",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"tiago\",\n\t\"nome\": \"Tiago Silva\",\n\t\"email\": \"tiago@ipca.pt\",\n\t\"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/registar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"registar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"tiago\",\n\t\"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,7 +1,6 @@
 'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-//mongoose.model('Utilizador');
 
 var inscricaoSchema = new Schema({
     nome: {
@@ -11,6 +10,11 @@ var inscricaoSchema = new Schema({
     inscritoPor: { // registar o utilizador (autenticado) responsável pela inscrição 
            type: mongoose.Schema.Types.ObjectId,
             ref: 'Utilizador'
+    },
+    estado: {
+        type: String,
+        enum: ['pendente', 'confirmada', 'cancelada'],
+        default: 'pendente'
     },
     Created_date: {
         type: Date,

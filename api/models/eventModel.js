@@ -16,6 +16,7 @@ var eventSchema = new Schema({
     creationDate: {
         type: Date,
         default: Date.now
-    }
-});
+    },
+    inscricoes: [{ type: Schema.Types.ObjectId, ref: 'Inscricao' }]
+}, {collection: 'EventsCollection'});
 module.exports = mongoose.model('Event', eventSchema);
